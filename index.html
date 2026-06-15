@@ -15,6 +15,7 @@
             --accent-orange: #dd6b20;
             --accent-green: #38a169;
             --discount-red: #e53e3e;
+            --rating-blue: #1e3a8a;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -71,6 +72,42 @@
             background-color: var(--discount-red); color: #fff; padding: 18px; text-align: center;
             border-radius: 10px; margin-bottom: 25px; border: 2px solid #feb2b2;
             box-shadow: 0 4px 15px rgba(229, 62, 62, 0.2);
+        }
+
+        /* 大蓝色独立推荐框 + 闪烁白光阴影 */
+        .rating-banner {
+            background-color: var(--rating-blue);
+            color: #ffffff;
+            padding: 22px;
+            text-align: center;
+            border-radius: 10px;
+            margin: 25px 0;
+            border: 2px solid #3b82f6;
+            animation: pulse-glow 2s infinite alternate;
+        }
+
+        .rating-banner h4 {
+            font-size: 24px;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .stars {
+            font-size: 28px;
+            color: #fbbf24;
+            text-shadow: 0 0 12px rgba(251, 191, 36, 0.8);
+        }
+
+        @keyframes pulse-glow {
+            0% {
+                box-shadow: 0 4px 10px rgba(30, 58, 138, 0.3), 0 0 5px rgba(59, 130, 246, 0.2);
+            }
+            100% {
+                box-shadow: 0 4px 20px rgba(30, 58, 138, 0.6), 0 0 15px rgba(59, 130, 246, 0.8);
+            }
         }
 
         h2 { font-size: 20px; margin-bottom: 22px; color: #1a202c; font-weight: 700; border-left: 5px solid #3182ce; padding-left: 12px; }
@@ -186,11 +223,16 @@
             <strong>优质节点体验：</strong> 一步到位的高速网络方案。专注打造稳定、高速、高性价比的网络加速体验。
         </div>
 
+        <div class="rating-banner">
+            <h4>推荐指数 五颗星</h4>
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+        </div>
+
         <h3>💎 核心卖点</h3>
         <div class="feature-grid">
             <div class="feature-item">
                 <div class="feature-title">▫️ 硬核网络，拒绝限速</div>
-                <div class="feature-desc">提供晚高峰带宽保障，真正做到不限速。专线家宽智能优选，全球优质节点秒级响应。</div>
+                <div class="feature-desc">提供晚高峰 4K 8K 流畅保证，所有套餐真正做到不限速。专线家宽智能优选，全球优质节点秒级响应。</div>
             </div>
             <div class="feature-item">
                 <div class="feature-title">▫️ 追剧福利，免费 Emby</div>
@@ -208,48 +250,4 @@
                 <div class="feature-title">📍 优质节点，线路干净</div>
                 <div class="feature-desc">拥有超过 50+ 家宽及原生IP节点，覆盖香港、台湾、韩国、日本、新加坡、美国、德国、法国、俄罗斯等地区。</div>
             </div>
-            <div class="feature-item">
-                <div class="feature-title">🧠 强抗封锁，稳定不掉线</div>
-                <div class="feature-desc">全节点采用家宽及原生IP，多协议加持，视频、开会、游戏、ChatGPT 长时间稳定在线。</div>
-            </div>
-            <div class="feature-item">
-                <div class="feature-title">🔰 小白友好，零配置起飞</div>
-                <div class="feature-desc">支持自动选路，无需挑选节点。支持 XUDP / Hysteria2 / VLESS 等优化协议。</div>
-            </div>
-        </div>
-
-        <h3>📊 真实测速数据</h3>
-        <div class="speed-box">
-            <div class="speed-item"><span>🇭🇰 香港家宽</span> <strong>35 ~ 60ms</strong></div>
-            <div class="speed-item"><span>🇹🇼 台湾家宽</span> <strong>35 ~ 60ms</strong></div>
-            <div class="speed-item"><span>🇰🇷 韩国家宽</span> <strong>40 ~ 70ms</strong></div>
-            <div class="speed-item"><span>🇸🇬 新加坡</span> <strong>60 ~ 90ms</strong></div>
-            <div class="speed-item"><span>🇺🇸 美国洛杉矶</span> <strong>160 ~ 180ms</strong></div>
-            <div class="speed-item"><span>🇩🇪 德国/法国</span> <strong>160 ~ 190ms</strong></div>
-            <div style="font-size: 12px; color: #718096; margin-top: 10px; text-align: center;">* 实测延迟低至 30ms 起，优于绝大多数同类产品</div>
-        </div>
-
-        <h3>🔧 服务承诺</h3>
-        <div class="feature-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
-            <div class="feature-item" style="border-left: 3px solid var(--accent-green); padding: 10px;">
-                <div class="feature-title">✅ 长期稳定运营</div><div class="feature-desc">不跑路、不超售、不虚标。</div>
-            </div>
-            <div class="feature-item" style="border-left: 3px solid var(--accent-green); padding: 10px;">
-                <div class="feature-title">✅ 每日维护扩容</div><div class="feature-desc">节点每日检查，持续更新。</div>
-            </div>
-            <div class="feature-item" style="border-left: 3px solid var(--accent-green); padding: 10px;">
-                <div class="feature-title">✅ 多地容灾备份</div><div class="feature-desc">确保使用不中断，安全可靠。</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="site-footer">
-        <div class="footer-links">
-            <a href="#">关于我们</a> | <a href="#">使用条款</a> | <a href="#">测速说明</a> | <a href="#">联系我们</a>
-        </div>
-        <p>&copy; 2024-2026 全球高速机场评测推荐网 版权所有</p>
-    </div>
-</div>
-
-</body>
-</html>
+            <div class="
