@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>全球优质高速机场评测推荐网</title>
+    <title>全球优质高速机场导航网 (VPN-Hub)</title>
     <style>
         :root {
             --primary-gradient: linear-gradient(135deg, #2b6cb0 0%, #1a365d 100%);
@@ -12,10 +12,7 @@
             --text-color: #2d3748;
             --text-muted: #718096;
             --border-color: #e2e8f0;
-            --accent-orange: #dd6b20;
-            --accent-green: #38a169;
-            --discount-red: #e53e3e;
-            --rating-blue: #1e3a8a;
+            --link-blue: #3182ce;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -31,260 +28,217 @@
         }
 
         .container {
-            max-width: 850px;
+            max-width: 1200px;
             margin: 0 auto;
-            background: var(--card-bg);
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            overflow: hidden;
         }
 
+        /* 顶部大气大横幅 */
         .site-header {
             background: var(--primary-gradient);
             color: white;
-            padding: 35px 30px;
+            padding: 40px 30px;
             text-align: center;
-            border-bottom: 4px solid #2b6cb0;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
-        .site-header h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; text-shadow: 0 2px 4px rgba(0,0,0,0.2); }
-        .site-header p { font-size: 14px; opacity: 0.9; }
-
-        .tabs-nav { display: flex; width: 100%; background: #f7fafc; border-bottom: 2px solid var(--border-color); }
-        .tab-btn {
-            flex: 1; text-align: center; padding: 16px 10px; cursor: pointer; font-weight: 600;
-            color: var(--text-muted); transition: all 0.2s ease; text-decoration: none;
-            border-bottom: 3px solid transparent; background: #f1f5f9; font-size: 15px;
+        .site-header h1 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
         }
 
-        input[type="radio"] { display: none; }
-        #tab1:checked ~ .tabs-nav label[for="tab1"],
-        #tab2:checked ~ .tabs-nav label[for="tab2"],
-        #tab3:checked ~ .tabs-nav label[for="tab3"] {
-            color: #2b6cb0; border-bottom: 3px solid #3182ce; background: var(--card-bg); font-weight: 700;
+        .site-header p {
+            font-size: 14px;
+            opacity: 0.9;
         }
 
-        .tab-content { display: none; padding: 35px; }
-        #tab1:checked ~ .content1, #tab2:checked ~ .content2, #tab3:checked ~ .content3 { display: block; }
-
-        .discount-banner {
-            background-color: var(--discount-red); color: #fff; padding: 18px; text-align: center;
-            border-radius: 10px; margin-bottom: 25px; border: 2px solid #feb2b2;
-            box-shadow: 0 4px 15px rgba(229, 62, 62, 0.2);
+        /* 分类大标题 */
+        .category-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 30px 0 15px 5px;
+            color: #1a202c;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        /* 大蓝色独立推荐框 + 闪烁白光阴影 */
-        .rating-banner {
-            background-color: var(--rating-blue);
-            color: #ffffff;
-            padding: 22px;
-            text-align: center;
+        /* 网格卡片布局 - 完美还原图二 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        /* 单个卡片样式 */
+        .airport-card {
+            background: var(--card-bg);
             border-radius: 10px;
-            margin: 25px 0;
-            border: 2px solid #3b82f6;
-            animation: pulse-glow 2s infinite alternate;
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
         }
 
-        .rating-banner h4 {
-            font-size: 24px;
-            font-weight: 800;
-            color: #ffffff;
-            letter-spacing: 2px;
-            margin-bottom: 8px;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.5);
+        .airport-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.07);
+            border-color: #3182ce;
         }
 
-        .stars {
-            font-size: 28px;
-            color: #fbbf24;
-            text-shadow: 0 0 12px rgba(251, 191, 36, 0.8);
+        /* 卡片头部：图标+名字 */
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
         }
 
-        @keyframes pulse-glow {
-            0% { box-shadow: 0 4px 10px rgba(30, 58, 138, 0.3), 0 0 5px rgba(59, 130, 246, 0.2); }
-            100% { box-shadow: 0 4px 20px rgba(30, 58, 138, 0.6), 0 0 15px rgba(59, 130, 246, 0.8); }
+        .card-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 8px;
+            background: #f7fafc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            border: 1px solid #edf2f7;
         }
 
-        h2 { font-size: 20px; margin-bottom: 22px; color: #1a202c; font-weight: 700; border-left: 5px solid #3182ce; padding-left: 12px; }
-        h3 { font-size: 17px; margin: 25px 0 12px 0; color: #2d3748; display: flex; align-items: center; gap: 8px; }
-
-        .link-section {
-            margin-bottom: 25px; background: #f8fafc; padding: 15px 20px;
-            border-radius: 8px; border: 1px dashed #cbd5e0;
-        }
-        .link-section a { color: #3182ce; text-decoration: none; font-weight: 600; margin: 0 5px; }
-
-        .notice-box {
-            background-color: #f0fff4; border-left: 4px solid var(--accent-green);
-            padding: 15px 20px; margin-bottom: 25px; border-radius: 4px; font-size: 14px; color: #22543d;
+        .card-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1a202c;
         }
 
-        .feature-grid { display: grid; grid-template-columns: 1fr; gap: 15px; margin-top: 10px; }
-        .feature-item {
-            background: #fff; padding: 15px; border-radius: 8px; border: 1px solid var(--border-color);
-            transition: transform 0.2s;
+        /* 卡片简介 */
+        .card-desc {
+            font-size: 13px;
+            color: #4a5568;
+            margin-bottom: 20px;
+            flex-grow: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
-        .feature-item:hover { transform: translateY(-2px); border-color: #3182ce; }
-        .feature-title { font-weight: 700; font-size: 15px; margin-bottom: 5px; color: #2d3748; display: flex; align-items: center; gap: 6px; }
-        .feature-desc { font-size: 13.5px; color: #4a5568; line-height: 1.5; }
 
-        .speed-box {
-            background: #1a202c; color: #edf2f7; border-radius: 10px; padding: 20px; margin-top: 15px;
-            font-family: 'Courier New', Courier, monospace;
+        /* 卡片底部双按钮 */
+        .card-actions {
+            display: flex;
+            gap: 10px;
         }
-        .speed-item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #2d3748; }
-        .speed-item:last-child { border-bottom: none; }
-        .speed-item strong { color: #63b3ed; }
 
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
-        th, td { padding: 14px; text-align: left; font-size: 14px; border-bottom: 1px solid var(--border-color); }
-        th { background: #f7fafc; color: #4a5568; width: 28%; }
+        .btn {
+            flex: 1;
+            text-align: center;
+            padding: 8px 5px;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
 
-        .site-footer { background: #f7fafc; padding: 30px; text-align: center; font-size: 13px; color: var(--text-muted); border-top: 1px solid var(--border-color); }
-        .footer-links { margin-bottom: 10px; }
-        .footer-links a { color: var(--text-muted); text-decoration: none; margin: 0 10px; }
+        .btn-review {
+            background: #edf2f7;
+            color: #4a5568;
+            border: 1px solid #e2e8f0;
+        }
+
+        .btn-review:hover {
+            background: #e2e8f0;
+            color: #1a202c;
+        }
+
+        .btn-go {
+            background: #3182ce;
+            color: white;
+        }
+
+        .btn-go:hover {
+            background: #2b6cb0;
+        }
+
+        /* 页脚 */
+        .site-footer {
+            text-align: center;
+            padding: 30px;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 50px;
+            border-top: 1px solid var(--border-color);
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
     <div class="site-header">
-        <h1>全球优质高速机场评测推荐网 (VPN-Hub)</h1>
-        <p>聚焦网络加速、隐私安全、跨境办公与极致性价比的专属网络推荐平台</p>
+        <h1>全球优质高速机场导航网 (VPN-Hub)</h1>
+        <p>聚合全网硬核专线加速方案 · 稳定抗封锁 · 小白一键起飞</p>
     </div>
 
-    <input type="radio" id="tab1" name="airport-tabs" checked>
-    <input type="radio" id="tab2" name="airport-tabs">
-    <input type="radio" id="tab3" name="airport-tabs">
+    <div class="category-title">📂 顶级推荐机场</div>
+    
+    <div class="card-grid">
+        <div class="airport-card">
+            <div>
+                <div class="card-header">
+                    <div class="card-icon">🏔️</div>
+                    <div class="card-name">雪山机场</div>
+                </div>
+                <div class="card-desc">推荐指数五颗星！提供晚高峰4K/8K极速流畅保证。原生IP家宽专线，更送免费Emby追剧影音库福利。</div>
+            </div>
+            <div class="card-actions">
+                <a href="detail.html?tab=3" class="btn btn-review">查看评测</a>
+                <a href="https://x2.xueshan.shop/#/register?code=XzS5lcdh" target="_blank" class="btn btn-go">直达官网</a>
+            </div>
+        </div>
 
-    <div class="tabs-nav">
-        <label for="tab1" class="tab-btn">悦通机场</label>
-        <label for="tab2" class="tab-btn">良心云</label>
-        <label for="tab3" class="tab-btn">雪山机场</label>
-    </div>
-
-    <div class="tab-content content1">
-        <div class="discount-banner">
-            <h4 style="font-size: 20px; font-weight: bold;">🔥 限时特惠：全场套餐 7 折 (30% OFF) 大促销！ 🔥</h4>
-            <p style="margin-top: 5px; opacity: 0.9;">节日特供 · 全线路适用 · 折扣功能已直接匹配官网链接</p>
-        </div>
-        <h2>1. 悦通 - 多档位套餐 + 不限时大流量包 + 高性价比</h2>
-        <div class="link-section">
-            <strong>官网入口：</strong>
-            <a href="https://my.yue.to/#/register?code=75OKCZJN" target="_blank">点击进入官网享受 7 折</a> | 
-            <a href="https://my.yue.to/#/register?code=75OKCZJN" target="_blank">备用地址</a>
-        </div>
-        <div class="notice-box" style="background-color: #fffaf0; border-left-color: var(--accent-orange); color: #744210;">
-            <strong>重要提示：</strong> 晚高峰略卡，建议先弄一个月试试。或者十几块钱买个 500G 不限时作为备用，很划算。对稳定性有要求的建议买 25/月及以上的套餐有专属节点。
-        </div>
-        <table>
-            <tbody>
-                <tr><th>开业时间</th><td>2025年中</td></tr>
-                <tr><th>老板肉身</th><td>境外</td></tr>
-                <tr><th>入口与边境</th><td>国内、多个境外</td></tr>
-                <tr><th>节点地区</th><td>台湾、日本、韩国、新加坡、美国、德国等 40+ 国家</td></tr>
-                <tr><th>落地 ISP</th><td>Chunghwa Telecom、Leaseweb、Daou Tech等</td></tr>
-                <tr><th>节点数量</th><td>140+（可用率 62%）</td></tr>
-                <tr><th>协议</th><td>VLESS + Hysteria2</td></tr>
-                <tr><th>TG 频道</th><td><a href="https://my.yue.to/#/register?code=75OKCZJN" target="_blank">点击加入</a></td></tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="tab-content content2">
-        <h2>2. 良心云 - 极速稳定与高性价比网络方案</h2>
-        <div class="link-section">
-            <strong>官网入口：</strong>
-            <a href="https://xn--9kqz23b19z.com/#/register?code=QAMRnE6s" target="_blank">点击进入官网</a> | 
-            <a href="https://xn--9kqz23b19z.com/#/register?code=QAMRnE6s" target="_blank">备用地址</a>
-        </div>
-        <div class="feature-grid">
-            <div class="feature-item"><div class="feature-title">🟥 超高速优质带宽</div><div class="feature-desc">10Gbps带宽能力，自研高性能后端，晚高峰观看 8K 60fps 视频无压力。</div></div>
-            <div class="feature-item"><div class="feature-title">🟥 全球流媒体解锁</div><div class="feature-desc">全节点 1.0 倍率，完美解锁 Netflix、Disney+、YouTube Premium。</div></div>
-            <div class="feature-item"><div class="feature-title">🟥 经济实惠与灵活套餐</div><div class="feature-desc">月付 2 元起步，提供一次性多种流量包选择，满足灵活需求。</div></div>
-            <div class="feature-item"><div class="feature-title">🟥 全平台多设备支持</div><div class="feature-desc">支持 8 台设备同时在线，兼容 Windows, iOS, Android 等，新手小白友好。</div></div>
-            <div class="feature-item"><div class="feature-title">🟥🟥 顶级安全与隐私 🟥🟥</div><div class="feature-desc">TLS 1.3 混淆加密传输，深度隐藏真实IP，全面捍卫隐私。</div></div>
+        <div class="airport-card">
+            <div>
+                <div class="card-header">
+                    <div class="card-icon">☁️</div>
+                    <div class="card-name">良心云</div>
+                </div>
+                <div class="card-desc">月付2元起步的性价比神器。自研高性能后端，提供10Gbps超大带宽流媒体解锁，支持8台设备同时在线。</div>
+            </div>
+            <div class="card-actions">
+                <a href="detail.html?tab=2" class="btn btn-review">查看评测</a>
+                <a href="https://xn--9kqz23b19z.com/#/register?code=QAMRnE6s" target="_blank" class="btn btn-go">直达官网</a>
+            </div>
         </div>
     </div>
 
-    <div class="tab-content content3">
-        <h2>3. 雪山机场 · 极速稳定 · 性价比之选</h2>
-        <div class="link-section">
-            <strong>官网入口：</strong>
-            <a href="https://x2.xueshan.shop/#/register?code=XzS5lcdh" target="_blank">点击进入官网</a> | 
-            <a href="https://x2.xueshan.shop/#/register?code=XzS5lcdh" target="_blank">备用地址</a>
-        </div>
-        <div class="notice-box">
-            <strong>优质节点体验：</strong> 一步到位的高速网络方案。专注打造稳定、高速、高性价比的网络加速体验。
-        </div>
+    <div class="category-title">📂 老牌性价比专区</div>
 
-        <div class="rating-banner">
-            <h4>推荐指数 五颗星</h4>
-            <div class="stars">⭐⭐⭐⭐⭐</div>
-        </div>
-
-        <h3>💎 核心卖点</h3>
-        <div class="feature-grid">
-            <div class="feature-item">
-                <div class="feature-title">▫️ 硬核网络，拒绝限速</div>
-                <div class="feature-desc">提供晚高峰 4K 8K 120fps流畅保证，所有套餐真正做到不限速。专线家宽智能优选，全球优质节点秒级响应。</div>
+    <div class="card-grid">
+        <div class="airport-card">
+            <div>
+                <div class="card-header">
+                    <div class="card-icon">⚡</div>
+                    <div class="card-name">悦通机场</div>
+                </div>
+                <div class="card-desc">限时特惠全场套餐享7折促销！提供超划算的多档位套餐及不限时500G大流量备用包。</div>
             </div>
-            <div class="feature-item">
-                <div class="feature-title">▫️ 追剧福利，免费 Emby</div>
-                <div class="feature-desc">完美解锁主流流媒体，订阅更直接赠送 Emby 影音库权限，海量资源随时畅享。</div>
-            </div>
-            <div class="feature-item">
-                <div class="feature-title">▫️ 安全稳定，体验拉满</div>
-                <div class="feature-desc">全程加密传输，兼顾隐私安全与极致流畅的网络体验。全场景加速无压力。</div>
-            </div>
-        </div>
-
-        <h3>🌐 全球网络布局</h3>
-        <div class="feature-grid">
-            <div class="feature-item">
-                <div class="feature-title">📍 优质节点，线路干净</div>
-                <div class="feature-desc">拥有超过 50+ 家宽及原生IP节点，覆盖香港、台湾、韩国、日本、新加坡、美国、德国、法国、俄罗斯等地区。</div>
-            </div>
-            <div class="feature-item">
-                <div class="feature-title">🧠 强抗封锁，稳定不掉线</div>
-                <div class="feature-desc">全节点采用家宽及原生IP，多协议加持，视频、开会、游戏、ChatGPT 长时间稳定在线。</div>
-            </div>
-            <div class="feature-item">
-                <div class="feature-title">🔰 小白友好，零配置起飞</div>
-                <div class="feature-desc">支持自动选路，无需挑选节点。支持 XUDP / Hysteria2 / VLESS 等优化协议。</div>
-            </div>
-        </div>
-
-        <h3>📊 真实测速数据（延迟）</h3>
-        <div class="speed-box">
-            <div class="speed-item"><span>🇭🇰 香港家宽</span> <strong>35 ~ 60ms</strong></div>
-            <div class="speed-item"><span>🇹🇼 台湾家宽</span> <strong>35 ~ 60ms</strong></div>
-            <div class="speed-item"><span>🇰🇷 韩国家宽</span> <strong>40 ~ 70ms</strong></div>
-            <div class="speed-item"><span>🇸🇬 新加坡</span> <strong>60 ~ 90ms</strong></div>
-            <div class="speed-item"><span>🇺🇸 美国洛杉矶</span> <strong>160 ~ 180ms</strong></div>
-            <div class="speed-item"><span>🇩🇪 德国/法国</span> <strong>160 ~ 190ms</strong></div>
-        </div>
-
-        <h3>🔧 服务承诺</h3>
-        <div class="feature-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
-            <div class="feature-item" style="border-left: 3px solid var(--accent-green); padding: 10px;">
-                <div class="feature-title">✅ 长期稳定运营</div><div class="feature-desc">不跑路、不超售、不玩虚标</div>
-            </div>
-            <div class="feature-item" style="border-left: 3px solid var(--accent-green); padding: 10px;">
-                <div class="feature-title">✅ 每日维护扩容</div><div class="feature-desc">节点每日维护，持续扩容，更新迅速</div>
-            </div>
-            <div class="feature-item" style="border-left: 3px solid var(--accent-green); padding: 10px;">
-                <div class="feature-title">✅ 多地容灾备份</div><div class="feature-desc">多地区容灾备份，确保使用不中断</div>
+            <div class="card-actions">
+                <a href="detail.html?tab=1" class="btn btn-review">查看评测</a>
+                <a href="https://my.yue.to/#/register?code=75OKCZJN" target="_blank" class="btn btn-go">直达官网</a>
             </div>
         </div>
     </div>
 
     <div class="site-footer">
-        <div class="footer-links">
-            <a href="#">关于我们</a> | <a href="#">使用条款</a> | <a href="#">测速说明</a> | <a href="#">联系我们</a>
-        </div>
-        <p>&copy; 2024-2026 全球高速机场评测推荐网 版权所有</p>
+        <p>&copy; 2024-2026 全球高速机场评测推荐网 版权所有. 拒绝虚标，真实测速.</p>
     </div>
 </div>
 
