@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://abigdavid.github.io/vpn-hub/sitemap.xml
