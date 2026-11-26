@@ -103,14 +103,16 @@
     #tab-yt:checked ~ .tabs-nav,
     #tab-lxy:checked ~ .tabs-nav,
     #tab-xs:checked ~ .tabs-nav,
-    #tab-tagss:checked ~ .tabs-nav {
+    #tab-tagss:checked ~ .tabs-nav,
+    #tab-coke:checked ~ .tabs-nav {
         display: flex;
     }
 
     #tab-yt:checked ~ .tabs-nav label[for="tab-yt"],
     #tab-lxy:checked ~ .tabs-nav label[for="tab-lxy"],
     #tab-xs:checked ~ .tabs-nav label[for="tab-xs"],
-    #tab-tagss:checked ~ .tabs-nav label[for="tab-tagss"] {
+    #tab-tagss:checked ~ .tabs-nav label[for="tab-tagss"],
+    #tab-coke:checked ~ .tabs-nav label[for="tab-coke"] {
         color: #2b6cb0;
         border-bottom: 3px solid #3182ce;
         background: var(--card-bg);
@@ -139,6 +141,10 @@
     }
 
     #tab-tagss:checked ~ .content-tagss {
+        display: block;
+    }
+
+    #tab-coke:checked ~ .content-coke {
         display: block;
     }
 
@@ -511,6 +517,95 @@
         font-size: 14px;
     }
 
+    /* CokeCloud / 可乐VPN */
+    .coke-banner {
+        background: linear-gradient(135deg, #dc2626 0%, #7f1d1d 100%);
+        color: white;
+        padding: 22px;
+        text-align: center;
+        border-radius: 10px;
+        margin-bottom: 25px;
+        border: 2px solid #fca5a5;
+        box-shadow: 0 4px 18px rgba(220, 38, 38, 0.25);
+    }
+
+    .coke-banner h4 {
+        font-size: 22px;
+        font-weight: 800;
+        margin-bottom: 7px;
+    }
+
+    .coke-banner p {
+        font-size: 14px;
+        opacity: 0.95;
+    }
+
+    .coke-highlight {
+        background: #fef2f2;
+        border-left: 4px solid #dc2626;
+        color: #7f1d1d;
+    }
+
+    .coke-stats {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+        margin: 20px 0 25px;
+    }
+
+    .coke-stat {
+        background: linear-gradient(135deg, #fef2f2 0%, #fff7ed 100%);
+        border: 2px solid #fca5a5;
+        border-radius: 10px;
+        padding: 18px 12px;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.08);
+    }
+
+    .coke-stat-number {
+        display: block;
+        font-size: 26px;
+        font-weight: 800;
+        color: #b91c1c;
+        line-height: 1.2;
+    }
+
+    .coke-stat-title {
+        display: block;
+        margin-top: 6px;
+        font-size: 13px;
+        font-weight: 700;
+        color: #7f1d1d;
+    }
+
+    .coke-stat-desc {
+        display: block;
+        margin-top: 3px;
+        font-size: 12px;
+        color: #4a5568;
+    }
+
+    .coke-operation {
+        background: #fef2f2;
+        border: 1px solid #fca5a5;
+        border-left: 4px solid #dc2626;
+        padding: 14px 18px;
+        border-radius: 8px;
+        margin-bottom: 25px;
+        color: #7f1d1d;
+        font-size: 14px;
+    }
+
+    .plan-table th {
+        width: auto;
+    }
+
+    .plan-table td,
+    .plan-table th {
+        font-size: 13px;
+        padding: 10px 8px;
+    }
+
     @media (max-width: 600px) {
         body {
             padding: 15px 10px;
@@ -566,6 +661,7 @@
 <input type="radio" id="tab-lxy" name="page-state">
 <input type="radio" id="tab-xs" name="page-state">
 <input type="radio" id="tab-tagss" name="page-state">
+<input type="radio" id="tab-coke" name="page-state">
 
 
 <!-- 顶部标签 -->
@@ -574,6 +670,7 @@
     <label for="tab-lxy" class="tab-btn">良心云</label>
     <label for="tab-xs" class="tab-btn">雪山机场</label>
     <label for="tab-tagss" class="tab-btn">Tagss机场</label>
+    <label for="tab-coke" class="tab-btn">可乐VPN</label>
 </div>
 
 
@@ -659,6 +756,34 @@
                 </label>
 
                 <a href="https://tagss.pro/#/auth/BiguyOII"
+                   target="_blank"
+                   class="btn btn-go">
+                    直达官网
+                </a>
+            </div>
+        </div>
+
+
+        <!-- 可乐VPN -->
+        <div class="airport-card">
+            <div>
+                <div class="card-header">
+                    <div class="card-icon">🥤</div>
+                    <div class="card-name">可乐VPN</div>
+                </div>
+
+                <div class="card-desc">
+                    CokeCloud，专线不限速、不限设备，月付24.90元起。
+                    解锁流媒体，港日美英等地区节点，电报群长期售后。
+                </div>
+            </div>
+
+            <div class="card-actions">
+                <label for="tab-coke" class="btn btn-review">
+                    查看评测
+                </label>
+
+                <a href="https://k.ih004.com/#/register?code=sVV6H0ND"
                    target="_blank"
                    class="btn btn-go">
                     直达官网
@@ -1497,6 +1622,404 @@
                   text-decoration: none;">
 
             点击进入 Tagss
+
+        </a>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     可乐VPN
+========================== -->
+
+<div class="content-coke tab-content">
+
+    <label for="tab-home" class="btn-back-home">
+        ⬅️ 返回首页
+    </label>
+
+
+    <div class="coke-banner">
+
+        <h4>🥤 可乐VPN · CokeCloud</h4>
+
+        <p>
+            专线不限速 · 不限设备 · 解锁流媒体 ·
+            港日美英等地区节点
+        </p>
+
+    </div>
+
+
+    <h2>
+        5. 可乐VPN - 专线不限速 + 流媒体解锁 + 电报群售后
+    </h2>
+
+
+    <div class="link-section">
+
+        <strong>官网入口：</strong>
+
+        <a href="https://k.ih004.com/#/register?code=sVV6H0ND"
+           target="_blank">
+            点击进入官网
+        </a>
+
+        |
+
+        <a href="https://k.ih004.com/#/register?code=sVV6H0ND"
+           target="_blank">
+            邀请码直达（sVV6H0ND）
+        </a>
+
+    </div>
+
+
+    <div class="coke-operation">
+
+        <strong>🟢 官网品牌：</strong>
+
+        CokeCloud（CokeCloud is the best!）
+
+    </div>
+
+
+    <!-- 重要数据 -->
+    <h3>🔥 可乐VPN 核心数据</h3>
+
+    <div class="coke-stats">
+
+        <div class="coke-stat">
+            <span class="coke-stat-number">¥24.90起</span>
+            <span class="coke-stat-title">专线月付</span>
+            <span class="coke-stat-desc">一顿午餐（专线）月付起</span>
+        </div>
+
+        <div class="coke-stat">
+            <span class="coke-stat-number">不限</span>
+            <span class="coke-stat-title">专线峰值速率 / 设备数</span>
+            <span class="coke-stat-desc">专线档不限速、不限设备</span>
+        </div>
+
+        <div class="coke-stat">
+            <span class="coke-stat-number">500GB</span>
+            <span class="coke-stat-title">专线大流量</span>
+            <span class="coke-stat-desc">一张音乐会票（专线）月流量</span>
+        </div>
+
+        <div class="coke-stat">
+            <span class="coke-stat-number">¥14.90起</span>
+            <span class="coke-stat-title">普通档月付</span>
+            <span class="coke-stat-desc">一顿早餐月付起（新客不可用）</span>
+        </div>
+
+    </div>
+
+
+    <div class="notice-box coke-highlight">
+
+        <strong>⚠️ 新客注意：</strong>
+
+        官网套餐图上，一顿早餐、一顿豪华早餐、一杯奶茶、一张电影票
+        四档都标注“该套餐新客不可用”，新用户请从专线档起选。
+        代理商、IPLC代理商四档都标注“勿拍”，不面向普通用户。
+
+    </div>
+
+
+    <h3>💎 核心卖点</h3>
+
+    <div class="feature-grid">
+
+        <div class="feature-item">
+
+            <div class="feature-title">
+                🚀 专线不限速、不限设备
+            </div>
+
+            <div class="feature-desc">
+                专线档峰值速率、设备限制数均为“不限”，
+                一顿午餐（专线）月付24.90元起，
+                一张音乐会票（专线）月流量500GB。
+            </div>
+
+        </div>
+
+
+        <div class="feature-item">
+
+            <div class="feature-title">
+                🎬 解锁流媒体
+            </div>
+
+            <div class="feature-desc">
+                全部12档套餐均标注“解锁流媒体”。
+            </div>
+
+        </div>
+
+
+        <div class="feature-item">
+
+            <div class="feature-title">
+                🌍 港日美英等地区节点
+            </div>
+
+            <div class="feature-desc">
+                地区：港、日、美、英、新、韩、德、土与印、泰、越、澳等，
+                普通档与专线档均有新节点与专线节点。
+            </div>
+
+        </div>
+
+
+        <div class="feature-item">
+
+            <div class="feature-title">
+                🛎️ 电报群长期售后 + 详细使用文档
+            </div>
+
+            <div class="feature-desc">
+                全部套餐均标注“加入电报群获取长期售后支持”
+                与“详细使用文档”。
+                注册后官网提供专用客户端与详细使用文档。
+            </div>
+
+        </div>
+
+
+        <div class="feature-item">
+
+            <div class="feature-title">
+                🔄 当月流量重置包
+            </div>
+
+            <div class="feature-desc">
+                用完月流量可买当月流量重置包，
+                各档4.5元至38元不等，见下方套餐表。
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <h3>💰 套餐一览（以官网套餐图为准，2026年11月26日截图）</h3>
+
+    <p style="font-size: 13px; color: #4a5568; margin-bottom: 5px;">
+        普通档限速200-300Mbps、限5台设备；专线档不限速、不限设备。
+        价格为官网标价：月付为每月总价，季付为每季度总价，半年付为每半年总价，年付为每年总价。
+    </p>
+
+    <table class="plan-table">
+
+        <thead>
+            <tr>
+                <th>套餐</th>
+                <th>价格</th>
+                <th>月流量</th>
+                <th>峰值速率</th>
+                <th>设备数</th>
+                <th>流量重置包</th>
+                <th>备注</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>一顿早餐（月付）</td>
+                <td><strong>¥14.90/月</strong></td>
+                <td>300GB</td>
+                <td>300Mbps</td>
+                <td>5</td>
+                <td>9元</td>
+                <td>新客不可用</td>
+            </tr>
+
+            <tr>
+                <td>一顿豪华早餐（月付）</td>
+                <td><strong>¥19.90/月</strong></td>
+                <td>400GB</td>
+                <td>200Mbps</td>
+                <td>5</td>
+                <td>9元</td>
+                <td>新客不可用</td>
+            </tr>
+
+            <tr>
+                <td>一杯奶茶（季付）</td>
+                <td><strong>¥38.90/季</strong></td>
+                <td>300GB</td>
+                <td>200Mbps</td>
+                <td>5</td>
+                <td>6元</td>
+                <td>新客不可用</td>
+            </tr>
+
+            <tr>
+                <td>一张电影票（半年付）</td>
+                <td><strong>¥58.90/半年</strong></td>
+                <td>200GB</td>
+                <td>200Mbps</td>
+                <td>5</td>
+                <td>4.5元</td>
+                <td>新客不可用</td>
+            </tr>
+
+            <tr>
+                <td>一顿午餐（专线·月付）</td>
+                <td><strong>¥24.90/月</strong></td>
+                <td>200GB</td>
+                <td>不限</td>
+                <td>不限</td>
+                <td>10元</td>
+                <td>新客可买的专线入门档</td>
+            </tr>
+
+            <tr>
+                <td>一盒寿司（专线·半年付）</td>
+                <td><strong>¥117.90/半年</strong></td>
+                <td>150GB</td>
+                <td>不限</td>
+                <td>不限</td>
+                <td>9元</td>
+                <td>—</td>
+            </tr>
+
+            <tr>
+                <td>一台游戏机（专线·年付）</td>
+                <td><strong>¥206.90/年</strong></td>
+                <td>100GB</td>
+                <td>不限</td>
+                <td>不限</td>
+                <td>8元</td>
+                <td>—</td>
+            </tr>
+
+            <tr>
+                <td>一张音乐会票（专线·月付）</td>
+                <td><strong>¥45.90/月</strong></td>
+                <td>500GB</td>
+                <td>不限</td>
+                <td>不限</td>
+                <td>18元</td>
+                <td>专线大流量档</td>
+            </tr>
+
+            <tr>
+                <td>代理商（勿拍）</td>
+                <td><strong>¥800.00/月</strong></td>
+                <td>200GB</td>
+                <td>不限</td>
+                <td>不限</td>
+                <td>4.5元</td>
+                <td>勿拍；不允许参与佣金返利</td>
+            </tr>
+
+            <tr>
+                <td>IPLC代理商（勿拍）</td>
+                <td><strong>¥1,000.00/月</strong></td>
+                <td>100GB</td>
+                <td>不限</td>
+                <td>不限</td>
+                <td>9元</td>
+                <td>勿拍；不允许参与佣金返利</td>
+            </tr>
+
+            <tr>
+                <td>IPLC代理商 200G（勿拍）</td>
+                <td><strong>¥2,100.00/月</strong></td>
+                <td>200GB</td>
+                <td>不限</td>
+                <td>不限</td>
+                <td>16元</td>
+                <td>勿拍；不允许参与佣金返利</td>
+            </tr>
+
+            <tr>
+                <td>IPLC代理商 500G（勿拍）</td>
+                <td><strong>¥4,200.00/月</strong></td>
+                <td>500GB</td>
+                <td>不限</td>
+                <td>不限</td>
+                <td>38元</td>
+                <td>勿拍；不允许参与佣金返利</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+
+    <h3>🎯 适用场景</h3>
+
+    <div class="feature-grid">
+
+        <div class="feature-item">
+
+            <div class="feature-title">
+                🎬 流媒体影音
+            </div>
+
+            <div class="feature-desc">
+                全部套餐均标注解锁流媒体，
+                适合日常追剧、看视频。
+            </div>
+
+        </div>
+
+
+        <div class="feature-item">
+
+            <div class="feature-title">
+                💻 多设备 / 大流量
+            </div>
+
+            <div class="feature-desc">
+                专线档不限设备，适合多台设备同时用；
+                一张音乐会票（专线）月流量500GB，
+                适合流量需求大的用户。
+            </div>
+
+        </div>
+
+
+        <div class="feature-item">
+
+            <div class="feature-title">
+                🧪 先试专线入门档
+            </div>
+
+            <div class="feature-desc">
+                新客不能买最便宜的四档普通套餐，
+                建议先从一顿午餐（专线）¥24.90/月起试，
+                再按流量需求升级。
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="notice-box"
+         style="background-color: #f0fff4;
+                border-left: 4px solid var(--accent-green);
+                color: #22543d;
+                margin-top: 25px;">
+
+        <strong>🎁 邀请链接：</strong>
+
+        <a href="https://k.ih004.com/#/register?code=sVV6H0ND"
+           target="_blank"
+           style="color: #3182ce;
+                  font-weight: 700;
+                  text-decoration: none;">
+
+            点击进入可乐VPN
 
         </a>
 
